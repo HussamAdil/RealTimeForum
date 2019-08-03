@@ -15,7 +15,7 @@ $factory->define(Question::class, function (Faker $faker) {
         'user_id' =>     function(){ return User::all()->random(); },
         'slug'  =>  str_slug($title) ,
         'body'  =>  $faker->text ,
-        'category' =>  function (){ return Category::all()->random();},
+        'category_id' =>  function (){ return Category::all()->random();},
 
     ];
 });
