@@ -55,9 +55,9 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        $question->delete();
+         $question->update($request->all());
         
-        return response(' deleted ' , 200 );
+         return response('updated' , 200);
     }
 
     /**
@@ -68,6 +68,8 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        
+        return response(' deleted ' , 200 );
     }
 }
