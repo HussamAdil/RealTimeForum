@@ -34,9 +34,12 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Question $question , Request $request)
     {
-        //
+        $reply = $question->replies()->create($request->all());
+
+        return response(['reply' => $reply ] , 200);
+        
     }
 
     /**
