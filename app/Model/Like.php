@@ -7,6 +7,8 @@ use App\User;
 
 class Like extends Model
 {
+    protected $guarded = [] ;
+    
     public function question()
     {
         return $this->belongsTo(Question::class);
