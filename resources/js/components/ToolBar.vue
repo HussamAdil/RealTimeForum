@@ -5,9 +5,10 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text>Link 1</v-btn>
-        <v-btn text>Link 2</v-btn>
-        <v-btn text>Link 3</v-btn>
+        <v-btn text>Login</v-btn>
+        <v-btn text>New Question</v-btn>
+        <v-btn text>Home</v-btn>
+         <v-btn text>Category</v-btn>
       </v-toolbar-items>
 
       <template v-if="$vuetify.breakpoint.smAndUp">

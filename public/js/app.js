@@ -1947,6 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -37358,11 +37359,13 @@ var render = function() {
       _c(
         "v-toolbar-items",
         [
-          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Link 1")]),
+          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Login")]),
           _vm._v(" "),
-          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Link 2")]),
+          _c("v-btn", { attrs: { text: "" } }, [_vm._v("New Question")]),
           _vm._v(" "),
-          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Link 3")])
+          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Home")]),
+          _vm._v(" "),
+          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Category")])
         ],
         1
       ),
