@@ -32,8 +32,16 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import AppHome from './components/AppHome.vue';
+Vue.component('AppHome', AppHome);
+
+ 
 const app = new Vue({
     el: '#app',
+    
     vuetify : new Vuetify(),
+    data: {
+        message: 'Hello Vue!'
+    }
 
 });
