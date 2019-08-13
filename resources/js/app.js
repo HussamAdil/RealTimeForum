@@ -33,9 +33,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 import AppHome from './components/AppHome.vue';
+
 Vue.component('AppHome', AppHome);
-import router from './router/router.js'
- 
+
+import router from './router/router.js';
+
+import user from './helpers/user'; 
+window.user = user
 const app = new Vue({
     el: '#app',
     router,
