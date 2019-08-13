@@ -4,13 +4,14 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items>
-        <v-btn text>Login</v-btn>
+      <div>
+        <v-btn text></v-btn>
+        <router-link to="/login">Login</router-link>
         <v-btn text>New Question</v-btn>
         <v-btn text>Home</v-btn>
          <v-btn text>Category</v-btn>
-         
-      </v-toolbar-items>
+
+      </div>
 
       <template v-if="$vuetify.breakpoint.smAndUp">
         <v-btn icon>
