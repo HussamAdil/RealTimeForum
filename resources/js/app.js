@@ -34,11 +34,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 import AppHome from './components/AppHome.vue';
 Vue.component('AppHome', AppHome);
-
+import router from './Router/router.js'
  
 const app = new Vue({
     el: '#app',
-    
+    router,
     vuetify : new Vuetify(),
     data: {
         message: 'Hello Vue!'

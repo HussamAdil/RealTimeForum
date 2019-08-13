@@ -9,6 +9,7 @@
         <v-btn text>New Question</v-btn>
         <v-btn text>Home</v-btn>
          <v-btn text>Category</v-btn>
+         
       </v-toolbar-items>
 
       <template v-if="$vuetify.breakpoint.smAndUp">
