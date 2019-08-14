@@ -8,7 +8,7 @@ class AppStore
     {
         localStorage.setItem('user' , user)
     }
-    store(user)
+    store(token,user)
     {
         this.storeToken(token)
         this.storeUser(user)
@@ -27,4 +27,4 @@ class AppStore
         return localStorage.getItem('user')
     }
 }
-export default AppStore = new User()
+export default AppStore = new AppStore()
