@@ -1966,6 +1966,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1974,13 +1977,18 @@ __webpack_require__.r(__webpack_exports__);
         email: null,
         password: null,
         password_confirmation: null
-      }
+      },
+      errors: {}
     };
   },
   methods: {
     signup: function signup() {
-      axios.post('api/auth/sigup').then(function (res) {
-        return user.responseAfterLogin();
+      var _this = this;
+
+      axios.post('api/auth/signup', this.form).then(function (res) {
+        return user.responseAfterLogin(res);
+      })["catch"](function (error) {
+        return _this.errors = error.response.data.errors;
       });
     }
   }
@@ -37504,7 +37512,7 @@ var render = function() {
       },
       [
         _c("v-text-field", {
-          attrs: { placeholder: "name", type: "text", required: "" },
+          attrs: { placeholder: "name", type: "text" },
           model: {
             value: _vm.form.name,
             callback: function($$v) {
@@ -37514,8 +37522,12 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _vm.errors.name
+          ? _c("span", [_vm._v(" " + _vm._s(_vm.errors.name[0]) + " ")])
+          : _vm._e(),
+        _vm._v(" "),
         _c("v-text-field", {
-          attrs: { type: "email", placeholder: "email", required: "" },
+          attrs: { type: "email", placeholder: "email" },
           model: {
             value: _vm.form.email,
             callback: function($$v) {
@@ -37525,8 +37537,12 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _vm.errors.email
+          ? _c("span", [_vm._v(" " + _vm._s(_vm.errors.email[0]) + " ")])
+          : _vm._e(),
+        _vm._v(" "),
         _c("v-text-field", {
-          attrs: { type: "password", placeholder: "password", required: "" },
+          attrs: { type: "password", placeholder: "password" },
           model: {
             value: _vm.form.password,
             callback: function($$v) {
@@ -37536,12 +37552,12 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _vm.errors.password
+          ? _c("span", [_vm._v(" " + _vm._s(_vm.errors.password[0]) + " ")])
+          : _vm._e(),
+        _vm._v(" "),
         _c("v-text-field", {
-          attrs: {
-            type: "password",
-            placeholder: "password confirmation",
-            required: ""
-          },
+          attrs: { type: "password", placeholder: "password confirmation" },
           model: {
             value: _vm.form.password_confirmation,
             callback: function($$v) {
@@ -89495,7 +89511,7 @@ function () {
       var payload = this.payload(token);
 
       if (payload) {
-        return payload.iss = "http://127.0.0.1:8000/api/auth/login" ? true : undefined;
+        return payload.iss =  true ? true : undefined;
       }
 
       return false;

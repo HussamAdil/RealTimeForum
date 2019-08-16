@@ -5,29 +5,32 @@
       v-model="form.name"
        placeholder="name"
       type="text"
-      required
+       
        
     ></v-text-field>
+    <span v-if="errors.name"> {{errors.name[0] }} </span>
 
     <v-text-field
       v-model="form.email"
       type="email"
        placeholder="email"
-      required
+       
        
     >
     </v-text-field>
+        <span v-if="errors.email"> {{errors.email[0] }} </span>
     <v-text-field
       v-model="form.password"
       type="password"
        placeholder="password"
-      required >
+        >
     </v-text-field>
+        <span v-if="errors.password"> {{errors.password[0] }} </span>
         <v-text-field
       v-model="form.password_confirmation"
       type="password"
        placeholder="password confirmation"
-      required >
+        >
     </v-text-field>
     
     
@@ -48,15 +51,20 @@ export default {
                 name:null,
                  email:null,
                 password :null,
-                password_confirmation :null
-            }
+                password_confirmation :null,
+               
+            },
+             errors:{}
         }
     },
     methods:
     {
+         
         signup()
         {
-          axios.post('api/auth/sigup').then((res) => user.responseAfterLogin())
+          axios.post('api/auth/signup' , this.form).then((res) => user.responseAfterLogin(res)).catch(
+              error => this.errors = error.response.data.errors
+          )
         }
     }
 }
