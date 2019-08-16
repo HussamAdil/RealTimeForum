@@ -40,6 +40,7 @@ import router from './router/router.js';
 
 import user from './helpers/user'; 
 window.user = user
+console.log( user.id());
 const app = new Vue({
     el: '#app',
     router,

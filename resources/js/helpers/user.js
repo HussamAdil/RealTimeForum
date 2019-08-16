@@ -20,6 +20,40 @@ class User {
             AppStore.store(access_token , username)
         }
     }
+    hasToken()
+    {
+        const storedToken = AppStore.getToken()
+        if(storedToken)
+        {
+            return Token.isValid(storedToken) ? true : false
+        }
+        return false
+    }
+    loggedIn()
+    {
+        return this.hasToken()
+    }
+    logout()
+    {
+        return AppStore.clear()
+    }
+    name()
+    {
+        if(this.loggedIn())
+        {
+             return AppStore.getUser()
+        }
+    }
+    id()
+    { 
+        if(this.loggedIn())
+        {
+            const payload =Token.payload(AppStore.getToken())
+            return payload.sub 
+
+        }
+        
+    }
 }
 
 
