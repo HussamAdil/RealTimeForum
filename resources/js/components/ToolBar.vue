@@ -1,3 +1,4 @@
+ 
  <template>
   <v-toolbar>
       <v-toolbar-title>Title</v-toolbar-title>
@@ -5,11 +6,11 @@
       <v-spacer></v-spacer>
 
       <div>
-        <v-btn text></v-btn>
-        <router-link to="/login">Login</router-link>
-        <v-btn text>New Question</v-btn>
-        <v-btn text>Home</v-btn>
-         <v-btn text>Category</v-btn>
+        
+        <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show" > 
+           <v-btn color="#eee" class="mr-2">  {{item.title}}  </v-btn> 
+          </router-link>
+        
 
       </div>
 
@@ -28,8 +29,35 @@
 </template>
 
 <script>
-export default {
+import bus from '../bus';
+ export default {
+  
+    data()
+    {
+      return {
+        items:[
+          {title:"Login" , to:"/Login", show:true},
 
+          {title:"Forum" , to:"/Forum", show:true},
+
+          {title:"Ask" , to:"/Ask", show:user.loggedIn()},
+
+           {title:"Category" , to:"/Category", show:user.loggedIn()},
+
+         {title:"Logout" , to:"/Logout", show:user.loggedIn()},
+        ]
+      }
+    },
+    created()
+    {
+      bus.$on('logout' , () => 
+      {
+        user.logout()
+      })
+    } ,
+     computed: {
+    
+    }
 }
 </script>
 

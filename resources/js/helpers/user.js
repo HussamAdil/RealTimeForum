@@ -7,7 +7,7 @@ class User {
     {
         axios.post('/api/auth/login' , data)
         .then(res => this.responseAfterLogin(res))
-        .catch(error => console.log(error.response))
+        .catch(error => error.response)
     }
     responseAfterLogin(res)
     {
@@ -18,7 +18,9 @@ class User {
         {
             
             AppStore.store(access_token , username)
+             window.location = '/forum'
         }
+        
     }
     hasToken()
     {
@@ -35,7 +37,8 @@ class User {
     }
     logout()
     {
-        return AppStore.clear()
+          AppStore.clear()
+        return window.location = '/forum'
     }
     name()
     {

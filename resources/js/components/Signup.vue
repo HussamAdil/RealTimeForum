@@ -57,12 +57,20 @@ export default {
              errors:{}
         }
     },
+     created()
+    {
+       
+    },
     methods:
     {
          
         signup()
         {
-          axios.post('api/auth/signup' , this.form).then((res) => user.responseAfterLogin(res)).catch(
+          axios.post('api/auth/signup' , this.form)
+          .then((res) => { user.responseAfterLogin(res)
+             
+              })
+              .catch(
               error => this.errors = error.response.data.errors
           )
         }

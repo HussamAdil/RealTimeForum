@@ -36,12 +36,19 @@ export default {
             }
         }
     },
+    created()
+    {
+      if(user.loggedIn())
+      {
+        this.$router.push({name:'Forum'})
+      }
+    },
     methods:
     {
         login()
         {
            user.login(this.form)
-        }
+         }
     }
 }
 </script>
