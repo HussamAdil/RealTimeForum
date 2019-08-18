@@ -40,7 +40,7 @@ import bus from '../bus';
 
           {title:"Forum" , to:"/Forum", show:true},
 
-          {title:"Ask" , to:"/Ask", show:user.loggedIn()},
+          {title:"Ask" , to:"question/Ask", show:user.loggedIn()},
 
            {title:"Category" , to:"/Category", show:user.loggedIn()},
 

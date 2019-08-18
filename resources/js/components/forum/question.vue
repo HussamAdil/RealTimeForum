@@ -7,7 +7,10 @@
                       {{data.title}}
                   </router-link>
                    </h3>
-              <div>{{ data.created_at}}  </div>
+              <div>
+                  {{ data.user}} 
+                    {{ data.created_at}} 
+                   </div>
           </div>
       </v-card-title>
       <v-card-text> {{data.body}} </v-card-text>

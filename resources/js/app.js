@@ -40,8 +40,9 @@ import router from './router/router.js';
 
 import user from './helpers/user'; 
 window.user = user
- 
-const app = new Vue({
+
+
+ const app = new Vue({
     el: '#app',
     router,
     vuetify : new Vuetify(),
@@ -50,3 +51,8 @@ const app = new Vue({
 });
  
 
+ 
+import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
+
+Vue.component('vue-simplemde', VueSimplemde)
