@@ -31,11 +31,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // auth()->user()->question()->all();
+         
+      $question =  Auth()->user()->question()->create($request->all());
 
-        Question::create($request->all());
-
-        return response('created' , 200);
+        return response( new QuestionResource($question) , 200);
     }
 
     /**

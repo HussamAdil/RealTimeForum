@@ -9,6 +9,15 @@ class Question extends Model
 {
     protected $fillable = ['title' , 'body' , 'slug' ,'category_id' ,'user_id'];
     
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($question)
+        {
+            $question->slug = str_slug($question->title);
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -28,6 +37,6 @@ class Question extends Model
     }
     public function getPathAttribute()
     {
-        return "question/$this->slug";
+        return "/question/$this->slug";
     }
 }
