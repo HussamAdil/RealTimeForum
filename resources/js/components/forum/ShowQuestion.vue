@@ -17,7 +17,7 @@
         <v-card-text v-html="body"></v-card-text>
            <v-card-actions v-if="own">
  <v-btn icon small>
-                  <v-icon color="blue">edit</v-icon>
+                  <v-icon color="blue" @click="edit">edit</v-icon>
                </v-btn>
               <v-btn icon small>
                   <v-icon color="red" @click="destroy">delete</v-icon>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+ import bus from '../../bus';
 import md from 'marked'
 export default {
     data(){
@@ -52,6 +53,10 @@ methods:{
         axios.delete(`/api/question/${this.data.slug}`)
         .then(res => this.$router.push('/forum'))
         .catch(error => console.log(error))
+    },
+    edit()
+    {
+        bus.$emit('startedting')
     }
 }
 
