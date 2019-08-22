@@ -9,7 +9,10 @@
                         :data = question
                     ></question>
                 </v-flex>
-                sidebar
+                <v-flex xs4>
+                <AppSiderBar></AppSiderBar>
+
+                </v-flex>
             </v-layout>
         </v-container>
     
@@ -17,7 +20,7 @@
 
 <script>
 import question from './question'
-
+import AppSiderBar from './AppSiderBar'
     export default {
          data:function()
          {
@@ -26,7 +29,7 @@ import question from './question'
          
 
          ,
-         components:{question}
+         components:{question ,AppSiderBar}
          ,
         
          created(){

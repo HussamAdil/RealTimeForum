@@ -42,7 +42,7 @@ import bus from '../bus';
 
           {title:"Ask" , to:"question/Ask", show:user.loggedIn()},
 
-           {title:"Category" , to:"/Category", show:user.loggedIn()},
+           {title:"Category" , to:"/CreateCategory", show:user.loggedIn()},
 
          {title:"Logout" , to:"/Logout", show:user.loggedIn()},
         ]
