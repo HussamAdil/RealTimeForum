@@ -8,6 +8,7 @@ import Forum from '../components/forum/Forum'
 import Ask from '../components/forum/Ask'
 
 import Read from '../components/forum/Read'
+import Replies from '../components/Replay/Replies'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
     { path: '/Forum', component: Forum , name:'Forum' },
     { path: '/question/ask', component: Ask , name:'Ask' },
     { path: '/question/:slug', component: Read , name:'Read' },
+    { path: 'replies', component: Replies , name:'Replies' },
 
   ]
 

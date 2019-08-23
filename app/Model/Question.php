@@ -9,6 +9,8 @@ class Question extends Model
 {
     protected $fillable = ['title' , 'body' , 'slug' ,'category_id' ,'user_id'];
     
+    protected $with = ['replies'];
+
     protected static function boot()
     {
         parent::boot();

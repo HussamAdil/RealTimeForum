@@ -6,10 +6,12 @@
       <v-spacer></v-spacer>
 
       <div>
-        
-        <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show" > 
+        <div v-if="item.show">
+        <router-link v-for="item in items" :key="item.title" :to="item.to"  > 
            <v-btn color="#eee" class="mr-2">  {{item.title}}  </v-btn> 
           </router-link>
+        </div>
+
         
 
       </div>
@@ -42,7 +44,7 @@ import bus from '../bus';
 
           {title:"Ask" , to:"question/Ask", show:user.loggedIn()},
 
-           {title:"Category" , to:"/CreateCategory", show:user.loggedIn()},
+           {title:"Category" , to:"/CreateCategory", show:user.IsAdmin()},
 
          {title:"Logout" , to:"/Logout", show:user.loggedIn()},
         ]

@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::latest()->get());
+        return CategoryResource::collection(Category::get());
     }
 
     /**
@@ -34,11 +34,11 @@ class CategoryController extends Controller
 
         $category->name = $request->name ;
 
-        $category->slug =str_slug($request->slug);
+        $category->slug = str_slug($request->name);
 
         $category->save();
 
-        return response('created' , 200 );
+        return response(new CategoryResource($category), 200 );
     }
 
     /**
@@ -63,8 +63,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update(['name' => $request->name , 'slug'=> str_slug($request->slug) ]);
-        return response('updated' , 200 );
+        $category->update(['name' => $request->name , 'slug'=> str_slug($request->name) ]);
+        return response(new CategoryResource($category) , 200 );
     }
 
     /**

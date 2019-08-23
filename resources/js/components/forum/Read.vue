@@ -3,6 +3,7 @@
 <EditiQuestion v-if="editing" :data=question></EditiQuestion>
 <div v-else>
       <ShowQestion :data=question v-if="question"></ShowQestion>
+      <Replies :replies="question.replies"></Replies>
 </div>
 </div>
 
@@ -11,9 +12,10 @@
 <script>
 import ShowQestion from './ShowQuestion';
 import EditiQuestion from './editQuestion';
+import Replies from '../Replay/Replies'
 import bus from '../../bus';
 export default {
-    components:{ShowQestion,EditiQuestion},
+    components:{ShowQestion,EditiQuestion,Replies},
     
     data()
     {
@@ -23,6 +25,7 @@ export default {
 created()
 {
     this.listen()
+    
     this.getQuestion()
     
 },

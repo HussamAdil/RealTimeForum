@@ -12,7 +12,7 @@
             </span>
             </div>
             <v-spacer></v-spacer>
-            <v-btn colo="green"> 5 replies</v-btn>
+            <v-btn colo="green"> {{ data.count}} replies</v-btn>
         </v-card-title>
         <v-card-text v-html="body"></v-card-text>
            <v-card-actions v-if="own">
@@ -34,6 +34,7 @@
 <script>
  import bus from '../../bus';
 import md from 'marked'
+ 
 export default {
     data(){
         return {
