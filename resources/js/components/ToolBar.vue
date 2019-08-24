@@ -6,8 +6,8 @@
       <v-spacer></v-spacer>
 
       <div>
-        <div v-if="item.show">
-        <router-link v-for="item in items" :key="item.title" :to="item.to"  > 
+        <div>
+        <router-link  v-if="item.show" v-for="item in items" :key="item.title" :to="item.to"  > 
            <v-btn color="#eee" class="mr-2">  {{item.title}}  </v-btn> 
           </router-link>
         </div>

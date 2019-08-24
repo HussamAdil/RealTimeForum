@@ -36,18 +36,21 @@
 import md from 'marked'
  
 export default {
+    props:['data'],
+    
     data(){
         return {
-            own:user.own(this.data.user_id)
+            own : user.own(this.data.user_id)
         }
     },
-props:['data'],
+
 computed:{
     body()
     {   
     return md.parse(this.data.body)
     }
 },
+ 
 methods:{
     destroy()
     {

@@ -8,20 +8,31 @@
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text v-html="data.relpy"> </v-card-text>
+          <v-card-actions v-if="own">
+              <v-btn>
+                  <v-icon small >edit</v-icon>
+                   
+              </v-btn>
+              <v-btn>
+                   <v-icon small >delete</v-icon>
+              </v-btn>
+          </v-card-actions>
       </v-card>
   </div>
 </template>
 
 <script>
- 
+ import user from '../../helpers/user'
 export default {
+    
     props:['data']
     ,
-    data(){
-        return {
-            own:user.own(this.data.user_id)
+        computed:
+        {
+            own:function()
+            {
+              return user.own(this.data.user_id)
             }
-
         }
 }
 </script>

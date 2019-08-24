@@ -47,22 +47,25 @@ class User {
              return AppStore.getUser()
         }
     }
-    id()
-    { 
+
+    id() { 
         if(this.loggedIn())
         {
             const payload =Token.payload(AppStore.getToken())
-            return payload.sub 
-
+             
+             return payload.sub 
+           
         }
         
     }
+
     own(id){
         return this.id() == id
-    }
+        }
+        
     IsAdmin()
     {
-        return this.id = 10 
+        return this.id == 10 
     }
 }
 
