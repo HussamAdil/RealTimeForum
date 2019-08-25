@@ -5,7 +5,7 @@
       <ShowQestion :data=question v-if="question"></ShowQestion>
       <v-container>
 
-      <Replies :replies="question.replies"></Replies>
+      <Replies :question="question"></Replies>
       <CreateReply :qustionslug="question.slug"></CreateReply>
       
       </v-container>

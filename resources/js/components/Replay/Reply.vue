@@ -13,7 +13,7 @@
                   <v-icon small >edit</v-icon>
                    
               </v-btn>
-              <v-btn>
+              <v-btn @click="destroy">
                    <v-icon small >delete</v-icon>
               </v-btn>
           </v-card-actions>
@@ -23,9 +23,17 @@
 
 <script>
  import user from '../../helpers/user'
+  import bus from '../../bus';
 export default {
     
-    props:['data']
+    props:['data' ,'index']
+,
+methods:{
+    destroy()
+    {
+        bus.$emit('deleteReply',this.index)
+    }
+}
     ,
         computed:
         {
@@ -34,6 +42,7 @@ export default {
               return user.own(this.data.user_id)
             }
         }
+
 }
 </script>
 

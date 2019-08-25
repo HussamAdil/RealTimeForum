@@ -2009,10 +2009,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['replies'],
+  props: ['question'],
   data: function data() {
     return {
-      content: this.replies
+      content: this.question.replies
     };
   },
   components: {
@@ -2027,6 +2027,11 @@ __webpack_require__.r(__webpack_exports__);
 
       _bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('newReply', function (reply) {
         _this.content.unshift(reply);
+      });
+      _bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('deleteReply', function (index) {
+        axios["delete"]("/api/question/".concat(_this.question.slug, "/reply/").concat(_this.content[index].id)).then(function (res) {
+          _this.content.splice(index, 1);
+        });
       });
     }
   }
@@ -2044,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/user */ "./resources/js/helpers/user.js");
+/* harmony import */ var _bus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../bus */ "./resources/js/bus.js");
 //
 //
 //
@@ -2068,8 +2074,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data'],
+  props: ['data', 'index'],
+  methods: {
+    destroy: function destroy() {
+      _bus__WEBPACK_IMPORTED_MODULE_1__["default"].$emit('deleteReply', this.index);
+    }
+  },
   computed: {
     own: function own() {
       return _helpers_user__WEBPACK_IMPORTED_MODULE_0__["default"].own(this.data.user_id);
@@ -58035,8 +58047,11 @@ var render = function() {
   return _c("v-container", [
     _c(
       "div",
-      _vm._l(_vm.content, function(reply) {
-        return _c("Reply", { key: reply.id, attrs: { data: reply } })
+      _vm._l(_vm.content, function(reply, index) {
+        return _c("Reply", {
+          key: reply.id,
+          attrs: { index: index, data: reply }
+        })
       }),
       1
     )
@@ -58099,6 +58114,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-btn",
+                    { on: { click: _vm.destroy } },
                     [
                       _c("v-icon", { attrs: { small: "" } }, [_vm._v("delete")])
                     ],
@@ -58645,7 +58661,7 @@ var render = function() {
               _c(
                 "v-container",
                 [
-                  _c("Replies", { attrs: { replies: _vm.question.replies } }),
+                  _c("Replies", { attrs: { question: _vm.question } }),
                   _vm._v(" "),
                   _c("CreateReply", {
                     attrs: { qustionslug: _vm.question.slug }
