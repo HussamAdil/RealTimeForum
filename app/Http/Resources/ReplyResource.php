@@ -19,6 +19,7 @@ class ReplyResource extends JsonResource
             'relpy' => $this->body,
             'user' =>$this->user->name,
             'user_id' =>$this->user_id,
+            'question_slug' =>$this->question->slug,
             'create_at' =>$this->created_at->diffForHumans()
         ];
     }

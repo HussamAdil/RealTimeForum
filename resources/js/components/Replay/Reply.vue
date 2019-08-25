@@ -7,9 +7,12 @@
               
           </v-card-title>
           <v-divider></v-divider>
-          <v-card-text v-html="data.relpy"> </v-card-text>
+          <Edit :reply="data" v-if="editing"></Edit>
+           
+          <v-card-text v-else v-html="data.relpy"> </v-card-text>
+          <div v-if="!editing">
           <v-card-actions v-if="own">
-              <v-btn>
+              <v-btn @click="edit">
                   <v-icon small >edit</v-icon>
                    
               </v-btn>
@@ -17,6 +20,8 @@
                    <v-icon small >delete</v-icon>
               </v-btn>
           </v-card-actions>
+          </div>
+
       </v-card>
   </div>
 </template>
@@ -24,14 +29,36 @@
 <script>
  import user from '../../helpers/user'
   import bus from '../../bus';
+  import Edit from './Edit' ;
+
 export default {
     
-    props:['data' ,'index']
+    props:['data' ,'index'],
+    components:{Edit}
+,
+data(){
+    return{
+        editing:false
+    }
+},
+created(){
+    this.lisent()
+}
 ,
 methods:{
     destroy()
     {
         bus.$emit('deleteReply',this.index)
+    },
+    edit()
+    {
+        this.editing = true
+    },
+    lisent()
+    {
+        bus.$on('cancelEditing',() => {
+            this.editing = false
+        })
     }
 }
     ,
