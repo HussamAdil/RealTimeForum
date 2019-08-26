@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-btn icon color="red" @click="likeIt">
+      <v-btn icon :color="color" @click="likeIt">
           <v-icon>favorite</v-icon> {{count}}
       </v-btn>
   </div>
@@ -27,12 +27,21 @@ methods:{
         }
     },
     incr(){
-        this.count++
+        axios.post(`/api/like/${this.content.id}`)
+        .then(res => this.count++ )
+        
     },   
     decr(){
+        axios.delete(`/api/like/${this.content.id}`)
         this.count--
     }
 
+},
+computed:{
+    color()
+    {
+        return this.liked ? 'red' : 'red lighten-4';
+    }
 }
 }
 </script>

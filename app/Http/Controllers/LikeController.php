@@ -17,16 +17,15 @@ class LikeController extends Controller
     {
        return  $reply->like()->create(
             [
-            //    'user_id' => auth()->user()->id
-                     'user_id' => '1'
+               'user_id' => auth()->id()
+                      
                 ]
         );
     }
     public function unLikeIt(Reply $reply)
     {
      $reply->like()->where(
-            // 'user_id' => auth()->user()->id 
-            'user_id' , 1)->first()->delete();
+             'user_id' , auth()->id() )->first()->delete();
             return response('delete' , 200);
     }
 }

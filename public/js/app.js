@@ -2922,10 +2922,20 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     incr: function incr() {
-      this.count++;
+      var _this = this;
+
+      axios.post("/api/like/".concat(this.content.id)).then(function (res) {
+        return _this.count++;
+      });
     },
     decr: function decr() {
+      axios["delete"]("/api/like/".concat(this.content.id));
       this.count--;
+    }
+  },
+  computed: {
+    color: function color() {
+      return this.liked ? 'red' : 'red lighten-4';
     }
   }
 });
@@ -59169,7 +59179,7 @@ var render = function() {
     [
       _c(
         "v-btn",
-        { attrs: { icon: "", color: "red" }, on: { click: _vm.likeIt } },
+        { attrs: { icon: "", color: _vm.color }, on: { click: _vm.likeIt } },
         [
           _c("v-icon", [_vm._v("favorite")]),
           _vm._v(" " + _vm._s(_vm.count) + "\n    ")
