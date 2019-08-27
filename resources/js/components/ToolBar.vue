@@ -4,7 +4,7 @@
       <v-toolbar-title>Title</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
+  <AppNotifcation></AppNotifcation>
       <div>
         <div>
         <router-link  v-if="item.show" v-for="item in items" :key="item.title" :to="item.to"  > 
@@ -32,8 +32,9 @@
 
 <script>
 import bus from '../bus';
+import AppNotifcation from './AppNotifcation'
  export default {
-  
+  components:{AppNotifcation},
     data()
     {
       return {

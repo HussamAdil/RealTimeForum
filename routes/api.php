@@ -29,6 +29,15 @@ Route::post('/like/{reply}/' , 'LikeController@likeIt');
 
 Route::Delete('/like/{reply}/' , 'LikeController@unLikeIt');
 
+// notification routes 
+
+Route::post('notification',function(){
+    return [
+        'read' => auth()->user()->readNotifications(),
+        'unread'=> auth()->user()->unReadNotifications(),
+    ];
+});
+
 Route::group([
 
     'middleware' => 'api',
